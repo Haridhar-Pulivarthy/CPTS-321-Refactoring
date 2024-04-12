@@ -11,7 +11,8 @@ class Program
         Console.WriteLine("(Inline Variable) Sum: ", result);
         
         // Extract Variable: Let's extract the parameter '5/2' (Opposite refactoring)
-	    double area = CalculateAreaOfCircle(5/2);
+        var foo = 5/2;
+        double area = CalculateAreaOfCircle(foo);
         Console.WriteLine("(Extract Variable) Area: ", area);
         
         // Remove Middle Man: Let's remove the middle man 'Add' function and add the parameters directly
