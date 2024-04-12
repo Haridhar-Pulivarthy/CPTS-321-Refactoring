@@ -21,10 +21,15 @@ class PreRefactoring
         // Original method with a middleman 'Add' function
         int Add(int a, int b)
         {
-            return a + b; // Middleman function call
+            return AddTwoNumbers(a, b); // Middleman function call
         }
-
-
+        
+         int AddTwoNumbers(int a, int b) // Middleman function
+        {
+            return a + b;
+        }
+         
+        
         // Using Safe Delete to remove Divide Method. Review the usages detected by Rider in the confirmation dialog. 
         double badResult = Divide(5, 0);
         Console.WriteLine($"(Replace Exception w/ Precheck) Quotient: {badResult}");
@@ -92,4 +97,6 @@ class PreRefactoring
 
         
     }
+
+    
 }
