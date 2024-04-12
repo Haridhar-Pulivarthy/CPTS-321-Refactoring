@@ -1,0 +1,89 @@
+using System;
+using ConsoleApp2;
+
+class PostRefactoring
+{
+    static void Main(string[] args)
+    {
+        // Code after refactoring.
+        
+        // The variable 'result' is removed
+        Console.WriteLine($"(Inline Variable) Sum: {Add(5, 3)} ");
+        
+        // Introducing: Parameter '5/2' is extracted into variable radius
+        var radius = 5.0/2.0;
+	    double area = Circle.CalculateAreaOfCircle(radius);
+        Console.WriteLine("(Extract Variable) Area: ", area);
+        
+        // Remove Middle Man: Let's remove the middle man 'Add' function and do the operation directly
+        int Add(int a, int b)
+        {
+            return a + b; // Middleman function call
+        }
+        
+        
+        // Safely deleted now doesn't have divide method
+        int precheckResult = SafeDivide(5, 0);
+        Console.WriteLine("(Replace Exception w/ Precheck) Quotient: ", precheckResult);
+    }
+    
+    // Successfully pulled down to the subclass
+    // Base class
+    class Shape
+    {
+        protected int width;
+        protected int height;
+
+        public Shape(int width, int height)
+        {
+            this.width = width;
+            this.height = height;
+        }
+    }
+
+// Subclass
+    class Rectangle : Shape
+    {
+        public Rectangle(int width, int height) : base(width, height)
+        {
+        }
+
+        public virtual int CalculateArea()
+        {
+            return width * height;
+        }
+
+        public virtual void Display()
+        {
+            Console.WriteLine($"Width: {width}, Height: {height}");
+        }
+    }
+    
+    
+    // Extract
+    class MyClass
+    {
+        public void DoSomething()
+        {
+            // Long method body
+            StepUno();
+            StepDos();
+            StepTres();
+        }
+
+        private static void StepUno()
+        {
+            Console.WriteLine("Step 1");
+        }
+        
+        private static void StepDos()
+        {
+            Console.WriteLine("Step 2");
+        }
+        
+        private static void StepTres()
+        {
+            Console.WriteLine("Step 3");
+        }
+    }
+}
