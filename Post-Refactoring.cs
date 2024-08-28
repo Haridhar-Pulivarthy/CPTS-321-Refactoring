@@ -7,7 +7,7 @@ class Program
         // Code after refactoring.
         
         // The variable 'result' is removed
-        Console.WriteLine("(Inline Variable) Sum: ", Add(5, 3));
+        Console.WriteLine($"(Inline Variable) Sum: {Add(5, 3)} ");
         
         // Extract Variable: Parameter '5/2' is extracted into variables diameter and radius
         double diameter = 5;
